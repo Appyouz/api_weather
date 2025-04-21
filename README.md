@@ -36,7 +36,7 @@ This project was built as part of my backend learning journey, following project
 1.  **Clone the Repository:**
     ```bash
     git clone git@github.com:Appyouz/api_weather.git
-    cd weather_bridge 
+    cd api_weather
     ```
 
 2.  **Create a Virtual Environment:**
