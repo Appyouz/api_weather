@@ -147,3 +147,45 @@ if not VISUAL_CROSSING_API_KEY:
     print("WARNING: VISUAL_CROSSING_API_KEY not found in environment variables!")
 
 
+CACHES = {
+    "default": { 
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "TIMEOUT": 60 * 60 * 12 
+    }
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False, 
+    'formatters': {
+        'verbose': { 
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{', 
+        },
+        'simple': { 
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler', 
+            'formatter': 'verbose', 
+        },
+    },
+    'loggers': {
+        'weather': { 
+            'handlers': ['console'], 
+            'level': 'DEBUG', 
+            'propagate': False, 
+        },
+    },
+    'root': { 
+        'handlers': ['console'],
+        'level': 'WARNING', 
+    },
+}
